@@ -2,17 +2,19 @@ package com.codewars;
 
 
 public class Persist {
-//    static int num;
+    static int num;
 
     public static long persistence(long number) {
-        int num = 0;
+        num = 0;
+        return persistence(String.valueOf(number));
+    }
+
+    public static long persistence(String valueOf) {
         long result = 1;
-        String valueOf = String.valueOf(number);
 
         if (valueOf.length() > 1) {
             for (int i = 0; i < valueOf.length(); i++) {
-                char i1 = valueOf.charAt(i);
-                int c = Integer.valueOf(i1);
+                int c = Integer.valueOf(valueOf.charAt(i));
                 result *= Character.getNumericValue(c);
             }
             num++;
@@ -20,12 +22,13 @@ public class Persist {
             return num;
         }
 
-//        System.out.println("number: " + number + " result:" + result);
+//        System.out.println("number: " + valueOf + " result:" + result);
 
-        return persistence(result);
+        return persistence(String.valueOf(result));
     }
 
     public static void main(String[] args) {
+        System.out.println(Persist.persistence(999));
         System.out.println(Persist.persistence(25));
 //        System.out.println(Persist.num);
     }
